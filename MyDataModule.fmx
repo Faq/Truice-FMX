@@ -1,8 +1,6 @@
 object dmMain: TdmMain
-  OldCreateOrder = False
-  Left = 192
-  Top = 103
-  Height = 359
+  OnDestroy = DataModuleDestroy
+  Height = 352
   Width = 426
   object ActionList: TActionList
     Left = 104
@@ -12,5 +10,11 @@ object dmMain: TdmMain
       Caption = '&Browse URL'
       Hint = 'Browse URL'
     end
+  end
+  object MyQuery: TFDQuery
+    Connection = MainForm.MyTrinityConnection
+    Params = <>
+    Left = 128
+    Top = 144
   end
 end
