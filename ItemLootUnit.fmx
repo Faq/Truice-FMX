@@ -1,54 +1,40 @@
 object ItemLootForm: TItemLootForm
   Left = 203
   Top = 149
-  BorderStyle = bsDialog
   Caption = 'Item Loot'
   ClientHeight = 437
   ClientWidth = 773
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
-  OldCreateOrder = False
   Position = poOwnerFormCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
   object Panel1: TPanel
-    Left = 0
-    Top = 396
+Position.X = 0.000000000000000000
+Position.Y = 396.000000000000000000
     Width = 773
     Height = 41
     Align = alBottom
-    BevelOuter = bvNone
     TabOrder = 0
-    DesignSize = (
-      773
-      41)
     object btClose: TButton
-      Left = 690
-      Top = 8
+Position.X = 690.000000000000000000
+Position.Y = 8.000000000000000000
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Cancel = True
-      Caption = 'Close'
+      Text = 'Close'
       ModalResult = 2
       TabOrder = 0
     end
   end
-  object PageControl1: TPageControl
-    Left = 0
-    Top = 0
+  object PageControl1: TTabControl
+TabIndex = 0
+Position.X = 0.000000000000000000
+Position.Y = 0.000000000000000000
     Width = 773
     Height = 396
-    ActivePage = tsLoot
     Align = alClient
     TabOrder = 1
-    object tsLoot: TTabSheet
-      Caption = 'Item Loot'
+    object tsLoot: TTabItem
+      Text = 'Item Loot'
       object lvItemLoot: TJvListView
         Left = 0
         Top = 0
@@ -119,7 +105,7 @@ object ItemLootForm: TItemLootForm
       end
     end
   end
-  object MyQuery: TUniQuery
+  object MyQuery: TFDQuery
     Connection = MainForm.MyTrinityConnection
     Params = <>
     Left = 65

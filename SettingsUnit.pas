@@ -3,14 +3,51 @@ unit SettingsUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, StdCtrls, ExtCtrls, Buttons, MyDataModule,
-  Mask, JvExComCtrls, JvListView, JvExMask, JvToolEdit;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics,
+
+  MyDataModule;
 
 type
   TSettingsForm = class(TForm)
-    pcSettings: TPageControl;
-    tsColumns: TTabSheet;
+    pcSettings: TTabControl;
+    tsColumns: TTabItem;
     Panel1: TPanel;
     lvColumns: TJvListView;
     Panel2: TPanel;
@@ -18,34 +55,40 @@ type
     btDel: TSpeedButton;
     btUp: TSpeedButton;
     btDown: TSpeedButton;
-    edFieldName: TLabeledEdit;
-    edWidth: TLabeledEdit;
+    edFieldName: TEdit;
+    edFieldName_LBL: TLabel;
+    edWidth: TEdit;
+    edWidth_LBL: TLabel;
     btUpdate: TSpeedButton;
     Label1: TLabel;
-    tsSite: TTabSheet;
+    tsSite: TTabItem;
     Panel3: TPanel;
     btOK: TButton;
     btCancel: TButton;
     Panel4: TPanel;
     Label2: TLabel;
     Panel5: TPanel;
-    rgSite: TRadioGroup;
-    tsLanguage: TTabSheet;
+    rgSite: TPanel;
+    tsLanguage: TTabItem;
     Panel6: TPanel;
     Panel7: TPanel;
     Label3: TLabel;
     lbLanguage: TLabel;
-    tsInternet: TTabSheet;
+    tsInternet: TTabItem;
     cbAutomaticCheckForUpdates: TCheckBox;
     Button1: TButton;
-    edProxyServer: TLabeledEdit;
-    edUsername: TLabeledEdit;
-    edPassword: TLabeledEdit;
-    edProxyPort: TLabeledEdit;
-    tsPreferences: TTabSheet;
-    rgSQLStyle: TRadioGroup;
+    edProxyServer: TEdit;
+    edProxyServer_LBL: TLabel;
+    edUsername: TEdit;
+    edUsername_LBL: TLabel;
+    edPassword: TEdit;
+    edPassword_LBL: TLabel;
+    edProxyPort: TEdit;
+    edProxyPort_LBL: TLabel;
+    tsPreferences: TTabItem;
+    rgSQLStyle: TPanel;
     cbxLanguage: TComboBox;
-    tsDBC: TTabSheet;
+    tsDBC: TTabItem;
     edDBCDir: TJvDirectoryEdit;
     lbDBCDir: TLabel;
     cbxDBCLocale: TComboBox;
@@ -76,7 +119,7 @@ implementation
 
 uses MainUnit, Math;
 
-{$R *.dfm}
+{$R *.FMX}
 
 procedure TSettingsForm.FormCreate(Sender: TObject);
 var
@@ -199,7 +242,6 @@ begin
   dmMain.ProxyPort := edProxyPort.Text;
   dmMain.ProxyUser := edUsername.Text;
   dmMain.ProxyPass := edPassword.Text;
-  MainForm.CheckforUpdates(true);
 end;
 
 procedure TSettingsForm.btOKClick(Sender: TObject);

@@ -3,8 +3,44 @@ unit ListUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, StdCtrls, ExtCtrls, JvExComCtrls, JvListView;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics;
 
 type
   TListForm = class(TForm)
@@ -12,7 +48,8 @@ type
     btOK: TButton;
     btCancel: TButton;
     pnSearch: TPanel;
-    edSearchMask: TLabeledEdit;
+    edSearchMask: TEdit;
+    edSearchMask_LBL: TLabel;
     lvList: TListView;
     procedure lvList2Change(Sender: TObject; Item: TListItem;
       Change: TItemChange);
@@ -35,7 +72,7 @@ implementation
 
 uses MyDataModule, Functions;
 
-{$R *.dfm}
+{$R *.FMX}
 
 { TListForm }
 

@@ -3,23 +3,62 @@ unit ItemPageUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, StdCtrls, ExtCtrls, DB,
-  MyDataModule, Menus, JvExComCtrls, JvListView, Uni;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics,
+
+  MyDataModule;
 
 type
   TItemPageForm = class(TForm)
     Panel1: TPanel;
     btOK: TButton;
     btCancel: TButton;
-    PageControl1: TPageControl;
-    tsSearch: TTabSheet;
+    PageControl1: TTabControl;
+    tsSearch: TTabItem;
     pnSearch: TPanel;
-    edPageID: TLabeledEdit;
+    edPageID: TEdit;
+    edPageID_LBL: TLabel;
     btSearch: TButton;
     lvPageItem: TJvListView;
-    MyQuery: TUniQuery;
-    edText: TLabeledEdit;
+    MyQuery: TFDQuery;
+    edText: TEdit;
+    edText_LBL: TLabel;
     procedure btSearchClick(Sender: TObject);
     procedure lvPageItemChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
@@ -36,7 +75,7 @@ implementation
 
 uses MainUnit;
 
-{$R *.dfm}
+{$R *.FMX}
 
 procedure TItemPageForm.btSearchClick(Sender: TObject);
 begin

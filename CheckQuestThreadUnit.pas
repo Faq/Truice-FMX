@@ -3,8 +3,46 @@ unit CheckQuestThreadUnit;
 interface
 
 uses
-  Classes, SysUtils, Dialogs, Messages, MyDataModule, WideStrings,
-  Uni;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics,
+
+  MyDataModule;
 
 type
   TCheckQuestThread = class(TThread)
@@ -12,9 +50,9 @@ type
     cq: integer;
     FQuestList: TList;
     Report:  TStringList;
-    MyQuery: TUniQuery;
-    MyTempQuery: TUniQuery;
-    MyLootQuery: TUniQuery;
+    MyQuery: TFDQuery;
+    MyTempQuery: TFDQuery;
+    MyLootQuery: TFDQuery;
     ErrorStr: string;
 
     function CheckQuestLog(qId: integer): string;
@@ -24,9 +62,9 @@ type
   protected
     procedure Execute; override;
   public
-    procedure Prepare(Connection : TUniConnection);
+    procedure Prepare(Connection : TFDConnection);
     property QuestList: TList read FQuestList write SetQuestList;
-    constructor Create(Connection: TUniConnection; List: TList; CreateSuspended: boolean);
+    constructor Create(Connection: TFDConnection; List: TList; CreateSuspended: boolean);
     procedure MyTerminate(Sender: TObject);
     procedure HandleThreadException;
   end;
@@ -726,11 +764,11 @@ begin
   FQuestList := Value;
 end;
 
-procedure TCheckQuestThread.Prepare(Connection : TUniConnection);
+procedure TCheckQuestThread.Prepare(Connection : TFDConnection);
 begin
-  MyQuery := TUniQuery.Create(nil);
-  MyTempQuery := TUniQuery.Create(nil);
-  MyLootQuery := TUniQuery.Create(nil);
+  MyQuery := TFDQuery.Create(nil);
+  MyTempQuery := TFDQuery.Create(nil);
+  MyLootQuery := TFDQuery.Create(nil);
   Report := TStringList.Create;
   MyQuery.Connection := Connection;
   MyTempQuery.Connection := Connection;
@@ -745,7 +783,7 @@ begin
   CheckForm.Memo.Perform(EM_SCROLLCARET, 0, 0);
 end;
 
-constructor TCheckQuestThread.Create(Connection: TUniConnection;
+constructor TCheckQuestThread.Create(Connection: TFDConnection;
   List: TList; CreateSuspended: boolean);
 begin
   inherited Create(CreateSuspended);

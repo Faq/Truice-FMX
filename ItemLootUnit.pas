@@ -3,18 +3,53 @@ unit ItemLootUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, StdCtrls, ExtCtrls, DB,
-  JvExComCtrls, JvListView, Uni;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics;
 
 type
   TItemLootForm = class(TForm)
     Panel1: TPanel;
     btClose: TButton;
-    PageControl1: TPageControl;
-    tsLoot: TTabSheet;
+    PageControl1: TTabControl;
+    tsLoot: TTabItem;
     lvItemLoot: TJvListView;
-    MyQuery: TUniQuery;
+    MyQuery: TFDQuery;
     procedure FormCreate(Sender: TObject);
   public
     procedure Prepare(key: string);
@@ -24,7 +59,7 @@ implementation
 
 uses MainUnit, MyDataModule;
 
-{$R *.dfm}
+{$R *.FMX}
 
 procedure TItemLootForm.Prepare(key: string);
 begin

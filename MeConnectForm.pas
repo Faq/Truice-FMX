@@ -3,8 +3,44 @@ unit MeConnectForm;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, ExtCtrls, TypInfo, Uni;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics;
 
 type
   TMeConnectForm = class(TForm)
@@ -58,7 +94,7 @@ implementation
 
 uses MainUnit, MyDataModule, Functions, Registry;
 
-{$R *.dfm}
+{$R *.FMX}
 
 procedure TMeConnectForm.DoInit;
 begin
@@ -77,9 +113,9 @@ begin
   MainForm.CharDBName := edcDatabase.Text;
   MainForm.RealmDBName := edrDatabase.Text;
   try
-    if MainForm.MyTrinityConnection.Connected then
-      MainForm.MyTrinityConnection.Disconnect;
-    MainForm.MyTrinityConnection.Connect;
+    if (MainForm.MyTrinityConnection.Connected=true) then
+      MainForm.MyTrinityConnection.Close;
+    MainForm.MyTrinityConnection.Open;
     if Trim(edCharSet.Text) <> '' then
     begin
       MainForm.MyTempQuery.SQL.Text := Format('SET NAMES %s',[edCharSet.Text]);
@@ -140,14 +176,14 @@ begin
   OldCursor := Screen.Cursor;
   Screen.Cursor := crSQLWait;
   try
-    WasConnected := MainForm.MyTrinityConnection.Connected;
-    if not WasConnected then    
-      MainForm.MyTrinityConnection.Connect;
-    MainForm.MyTrinityConnection.GetDatabaseNames(edmDatabase.Items);
+    WasConnected := (MainForm.MyTrinityConnection.Connected=True);
+    if (WasConnected=False) then    
+      MainForm.MyTrinityConnection.Open;
+    MainForm.MyTrinityConnection.GetCatalogNames('', edmDatabase.Items);
     edcDatabase.Items.AddStrings(edmDatabase.Items);
     edrDatabase.Items.AddStrings(edmDatabase.Items);
-    if not WasConnected then
-      MainForm.MyTrinityConnection.Disconnect;
+    if (WasConnected=False) then
+      MainForm.MyTrinityConnection.Close;
   finally
     Screen.Cursor := OldCursor;
   end;
@@ -156,11 +192,13 @@ end;
 procedure TMeConnectForm.edExit(Sender: TObject);
 begin
   try
-    MainForm.MyTrinityConnection.Password := edPassword.Text;
-    MainForm.MyTrinityConnection.Server := edServer.Text;
-    MainForm.MyTrinityConnection.Username := edUsername.Text;
-    MainForm.MyTrinityConnection.Database := edmDatabase.Text;
-    MainForm.MyTrinityConnection.Port := StrToIntDef(edPort.Text, 3306);
+  	MainForm.MyTrinityConnection.Params.Clear;
+	MainForm.MyTrinityConnection.DriverName:='MySQL';
+	MainForm.MyTrinityConnection.Params.AddPair('Server', edServer.Text);
+	MainForm.MyTrinityConnection.Params.AddPair('Port', edPort.Text);
+	MainForm.MyTrinityConnection.Params.AddPair('Database', edmDatabase.Text);
+	MainForm.MyTrinityConnection.Params.AddPair('User_Name', edUsername.Text);
+	MainForm.MyTrinityConnection.Params.AddPair('Password', edPassword.Text);
   except
     ActiveControl := Sender as TWinControl;
     raise;

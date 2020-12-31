@@ -3,22 +3,59 @@ unit GUIDUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, StdCtrls, ExtCtrls, DB,
-  Menus, Buttons, JvExComCtrls, JvListView, Uni;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics;
 
 type
   TGUIDForm = class(TForm)
-    PageControl1: TPageControl;
-    tsSearch: TTabSheet;
+    PageControl1: TTabControl;
+    tsSearch: TTabItem;
     pnSearch: TPanel;
-    edID: TLabeledEdit;
-    edName: TLabeledEdit;
+    edID: TEdit;
+    edID_LBL: TLabel;
+    edName: TEdit;
+    edName_LBL: TLabel;
     btSearch: TButton;
     Panel1: TPanel;
     btOK: TButton;
     btCancel: TButton;
-    MyQuery: TUniQuery;
+    MyQuery: TFDQuery;
     lvGUID: TJvListView;
     lvCreatureOrGO: TJvListView;
     procedure lvGUIDChange(Sender: TObject; Item: TListItem;
@@ -46,7 +83,7 @@ implementation
 
 uses MainUnit, MyDataModule;
 
-{$R *.dfm}
+{$R *.FMX}
 
 { TGUIDForm }
 

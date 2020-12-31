@@ -4,64 +4,50 @@ object TextFieldEditorForm: TTextFieldEditorForm
   Caption = 'Text Field Editor'
   ClientHeight = 394
   ClientWidth = 516
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  KeyPreview = True
-  OldCreateOrder = False
   Position = poMainFormCenter
-  PixelsPerInch = 96
-  TextHeight = 13
-  object PageControl: TPageControl
-    Left = 0
-    Top = 0
+  object PageControl: TTabControl
+TabIndex = 0
+Position.X = 0.000000000000000000
+Position.Y = 0.000000000000000000
     Width = 516
     Height = 394
-    ActivePage = TabSheet
     Align = alClient
     TabOrder = 0
     TabStop = False
-    object TabSheet: TTabSheet
-      Caption = 'Text'
+    object TabSheet: TTabItem
+      Text = 'Text'
       object Panel: TPanel
-        Left = 0
-        Top = 320
+Position.X = 0.000000000000000000
+Position.Y = 320.000000000000000000
         Width = 508
         Height = 46
         Align = alBottom
-        BevelOuter = bvNone
         TabOrder = 1
-        DesignSize = (
-          508
-          46)
         object btOK: TButton
-          Left = 345
-          Top = 12
+Position.X = 345.000000000000000000
+Position.Y = 12.000000000000000000
           Width = 75
           Height = 25
           Anchors = [akTop, akRight]
-          Caption = 'OK'
+          Text = 'OK'
           ModalResult = 1
           TabOrder = 0
         end
         object btCancel: TButton
-          Left = 426
-          Top = 12
+Position.X = 426.000000000000000000
+Position.Y = 12.000000000000000000
           Width = 75
           Height = 25
           Anchors = [akTop, akRight]
           Cancel = True
-          Caption = 'Cancel'
+          Text = 'Cancel'
           ModalResult = 2
           TabOrder = 1
         end
       end
       object Memo: TMemo
-        Left = 0
-        Top = 0
+Position.X = 0.000000000000000000
+Position.Y = 0.000000000000000000
         Width = 508
         Height = 320
         Align = alClient

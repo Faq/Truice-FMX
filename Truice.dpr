@@ -1,7 +1,7 @@
 program Truice;
 
 uses
-  Forms,
+ FMX.Forms,
   MainUnit in 'MainUnit.pas' {MainForm},
   WhoUnit in 'WhoUnit.pas' {WhoQuestForm},
   ItemUnit in 'ItemUnit.pas' {ItemForm},
@@ -27,14 +27,16 @@ uses
   Functions in 'Functions.pas';
 
 {$R *.res}
+
 begin
   Application.Initialize;
   Application.Title := 'Truice';
-  Application.ShowMainForm:=false;
+  Application.ShowMainForm := false;
   Application.CreateForm(TdmMain, dmMain);
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TSpellsForm, SpellsForm);
   Application.CreateForm(TCheckForm, CheckForm);
   Application.CreateForm(TAreaTableForm, AreaTableForm);
   Application.Run;
+
 end.

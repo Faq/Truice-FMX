@@ -1,108 +1,100 @@
 object ItemPageForm: TItemPageForm
   Left = 268
   Top = 147
-  BorderStyle = bsDialog
   Caption = 'ItemPage'
   ClientHeight = 367
   ClientWidth = 498
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
-  OldCreateOrder = False
   Position = poOwnerFormCenter
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
   object Panel1: TPanel
-    Left = 0
-    Top = 326
+Position.X = 0.000000000000000000
+Position.Y = 326.000000000000000000
     Width = 498
     Height = 41
     Align = alBottom
-    BevelOuter = bvNone
     TabOrder = 0
-    DesignSize = (
-      498
-      41)
     object btOK: TButton
-      Left = 335
-      Top = 8
+Position.X = 335.000000000000000000
+Position.Y = 8.000000000000000000
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
-      Caption = 'OK'
+      Text = 'OK'
       Enabled = False
       ModalResult = 1
       TabOrder = 0
     end
     object btCancel: TButton
-      Left = 415
-      Top = 8
+Position.X = 415.000000000000000000
+Position.Y = 8.000000000000000000
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Cancel = True
-      Caption = 'Cancel'
+      Text = 'Cancel'
       ModalResult = 2
       TabOrder = 1
     end
   end
-  object PageControl1: TPageControl
-    Left = 0
-    Top = 0
+  object PageControl1: TTabControl
+TabIndex = 0
+Position.X = 0.000000000000000000
+Position.Y = 0.000000000000000000
     Width = 498
     Height = 326
-    ActivePage = tsSearch
     Align = alClient
     TabOrder = 1
-    object tsSearch: TTabSheet
-      Caption = 'Search'
+    object tsSearch: TTabItem
+      Text = 'Search'
       object pnSearch: TPanel
-        Left = 0
-        Top = 0
+Position.X = 0.000000000000000000
+Position.Y = 0.000000000000000000
         Width = 490
         Height = 41
         Align = alTop
-        BevelOuter = bvNone
         TabOrder = 0
-        DesignSize = (
-          490
-          41)
-        object edPageID: TLabeledEdit
-          Left = 8
-          Top = 16
+        object edPageID: TEdit
+Position.X = 8.000000000000000000
+Position.Y = 16.000000000000000000
           Width = 121
           Height = 21
-          EditLabel.Width = 39
-          EditLabel.Height = 13
-          EditLabel.Caption = 'Page ID'
           TabOrder = 0
         end
+object edPageID_LBL: TLabel
+Position.X = 8.000000000000000000
+Position.Y = 2.000000000000000000
+Width = 39
+Height = 13
+Text = 'Page ID'
+WordWrap = False
+end
         object btSearch: TButton
-          Left = 411
-          Top = 13
+Position.X = 411.000000000000000000
+Position.Y = 13.000000000000000000
           Width = 75
           Height = 25
           Anchors = [akTop, akRight]
-          Caption = 'Search'
+          Text = 'Search'
           Default = True
           TabOrder = 1
           OnClick = btSearchClick
         end
-        object edText: TLabeledEdit
-          Left = 136
-          Top = 16
+        object edText: TEdit
+Position.X = 136.000000000000000000
+Position.Y = 16.000000000000000000
           Width = 265
           Height = 21
-          EditLabel.Width = 21
-          EditLabel.Height = 13
-          EditLabel.Caption = 'Text'
           TabOrder = 2
         end
+object edText_LBL: TLabel
+Position.X = 136.000000000000000000
+Position.Y = 2.000000000000000000
+Width = 21
+Height = 13
+Text = 'Text'
+WordWrap = False
+end
       end
       object lvPageItem: TJvListView
         Left = 0
@@ -143,7 +135,7 @@ object ItemPageForm: TItemPageForm
       end
     end
   end
-  object MyQuery: TUniQuery
+  object MyQuery: TFDQuery
     Connection = MainForm.MyTrinityConnection
     Params = <>
     Left = 412

@@ -3,30 +3,69 @@ unit ItemUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, StdCtrls, ExtCtrls, DB,
-  MyDataModule, Menus, Buttons, JvExComCtrls, JvListView, Uni;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics,
+
+  MyDataModule;
 
 type
   TItemForm = class(TForm)
     Panel1: TPanel;
     btOK: TButton;
     btCancel: TButton;
-    PageControl1: TPageControl;
-    tsSearch: TTabSheet;
+    PageControl1: TTabControl;
+    tsSearch: TTabItem;
     pnSearch: TPanel;
-    edItemID: TLabeledEdit;
-    edItemName: TLabeledEdit;
+    edItemID: TEdit;
+    edItemID_LBL: TLabel;
+    edItemName: TEdit;
+    edItemName_LBL: TLabel;
     btSearch: TButton;
     lvItem: TJvListView;
-    MyQuery: TUniQuery;
+    MyQuery: TFDQuery;
     btBrowseSite: TButton;
     btLoot: TButton;
     pmBrowseSite: TPopupMenu;
     pmwowhead: TMenuItem;
     pmthottbot: TMenuItem;
     pmallakhazam: TMenuItem;
-    btBrowseItemPopup: TBitBtn;
+    btBrowseItemPopup: TButton;
     pmwowdb: TMenuItem;
     pmruwowhead: TMenuItem;
     procedure btSearchClick(Sender: TObject);
@@ -51,7 +90,7 @@ implementation
 
 uses MainUnit, ItemLootUnit;
 
-{$R *.dfm}
+{$R *.FMX}
 
 procedure TItemForm.btSearchClick(Sender: TObject);
 begin

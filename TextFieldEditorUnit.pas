@@ -3,13 +3,49 @@ unit TextFieldEditorUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics;
 
 type
   TTextFieldEditorForm = class(TForm)
-    PageControl: TPageControl;
-    TabSheet: TTabSheet;
+    PageControl: TTabControl;
+    TabSheet: TTabItem;
     Panel: TPanel;
     Memo: TMemo;
     btOK: TButton;
@@ -26,7 +62,7 @@ var
 
 implementation
 
-{$R *.dfm}
+{$R *.FMX}
 
 procedure TTextFieldEditorForm.MemoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin

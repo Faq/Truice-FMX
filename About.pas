@@ -32,15 +32,54 @@ unit About;
 
 interface
 
-uses Windows, SysUtils, Forms,  Classes, Graphics, Dialogs, Math,
-     Controls, StdCtrls, ExtCtrls, ActnList, ExtActns, Registry, JvExControls, JvPoweredBy;
+Uses
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  System.Actions,
+  FMX.ActnList,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics;
 
 type
   TAboutBox = class(TForm)
     ActionList1: TActionList;
     BrowseURL1: TBrowseURL;
     Panel2: TPanel;
-    Bevel1: TBevel;
+    Bevel1: TPanel;
     OKButton: TButton;
     Panel1: TPanel;
     lblVersion: TLabel;
@@ -53,6 +92,10 @@ type
     lbprojectwebsite: TLabel;
     Label2: TLabel;
     Label1: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
     procedure FormShow(Sender: TObject);
     procedure LinkSiteClick(Sender: TObject);
   private
@@ -68,7 +111,7 @@ implementation
 
 uses StrUtils, Functions, MyDataModule;
 
-{$R *.dfm}
+{$R *.FMX}
 
 function GetFileVersion(FileName: string; var Major, Minor, Release, Build: Word): Boolean;
 var
@@ -115,7 +158,7 @@ end;
 
 procedure TAboutBox.LinkSiteClick(Sender: TObject);
 begin
-  BrowseURL1.URL:='http://github.com/Faq/Truice';
+  BrowseURL1.URL:='https://github.com/Faq/Truice';
   BrowseURL1.Execute;
 end;
 

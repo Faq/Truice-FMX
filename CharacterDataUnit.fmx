@@ -4,45 +4,32 @@ object CharacterDataForm: TCharacterDataForm
   Caption = 'Character Data'
   ClientHeight = 525
   ClientWidth = 630
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
-  PixelsPerInch = 96
-  TextHeight = 13
   object Panel1: TPanel
-    Left = 0
-    Top = 484
+Position.X = 0.000000000000000000
+Position.Y = 484.000000000000000000
     Width = 630
     Height = 41
     Align = alBottom
-    BevelOuter = bvNone
     TabOrder = 0
-    DesignSize = (
-      630
-      41)
     object btOK: TButton
-      Left = 467
-      Top = 8
+Position.X = 467.000000000000000000
+Position.Y = 8.000000000000000000
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
-      Caption = 'OK'
+      Text = 'OK'
       ModalResult = 1
       TabOrder = 0
     end
     object btCancel: TButton
-      Left = 547
-      Top = 8
+Position.X = 547.000000000000000000
+Position.Y = 8.000000000000000000
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Cancel = True
-      Caption = 'Cancel'
+      Text = 'Cancel'
       ModalResult = 2
       TabOrder = 1
     end

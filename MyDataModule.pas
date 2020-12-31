@@ -3,8 +3,48 @@ unit MyDataModule;
 interface
 
 uses
-  Forms, SysUtils, Classes, ActnList, ExtActns, Translate, WideStrings,
-  DB, JvExComCtrls, JvListView, Uni;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  System.Actions,
+  FMX.ActnList,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics,
+
+  Translate;
 
 const
   DefaultLanguage = 'Default';
@@ -17,7 +57,7 @@ type
   TdmMain = class(TDataModule)
     ActionList: TActionList;
     BrowseURL: TBrowseURL;
-    MyQuery: TUniQuery;
+    MyQuery: TFDQuery;
     procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
@@ -359,6 +399,7 @@ begin
   Text[156]:='LootMode';
   Text[157]:='The error has accured while loading Creature EventAI:';
   Text[158]:='Please specify a source type!';
+  Text[159]:='The error has accured while loading Creature Template Movement:';
 end;
 
 procedure TdmMain.SetLanguage(const Value: string);

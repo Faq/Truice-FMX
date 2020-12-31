@@ -3,21 +3,58 @@ unit WhoUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, DB,
-  Menus, Buttons, JvExComCtrls, JvListView, Uni;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics;
 
 type
   TWhoQuestForm = class(TForm)
-    PageControl1: TPageControl;
-    tsSearch: TTabSheet;
+    PageControl1: TTabControl;
+    tsSearch: TTabItem;
     pnSearch: TPanel;
-    edWhoID: TLabeledEdit;
-    edWhoName: TLabeledEdit;
+    edWhoID: TEdit;
+    edWhoID_LBL: TLabel;
+    edWhoName: TEdit;
+    edWhoName_LBL: TLabel;
     btSearch: TButton;
     lvWho: TJvListView;
-    rgTypeOfWho: TRadioGroup;
-    MyQuery: TUniQuery;
+    rgTypeOfWho: TPanel;
+    MyQuery: TFDQuery;
     Panel1: TPanel;
     btOK: TButton;
     btCancel: TButton;
@@ -29,7 +66,7 @@ type
     pmwowhead: TMenuItem;
     pmthottbot: TMenuItem;
     pmallakhazam: TMenuItem;
-    btBrowseQuesterPopup: TBitBtn;
+    btBrowseQuesterPopup: TButton;
     pmwowdb: TMenuItem;
     pmruwowhead: TMenuItem;
     procedure btSearchClick(Sender: TObject);
@@ -55,7 +92,7 @@ implementation
 
 uses MainUnit, Functions, MyDataModule;
 
-{$R *.dfm}
+{$R *.FMX}
 
 procedure TWhoQuestForm.btSearchClick(Sender: TObject);
 begin

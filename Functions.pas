@@ -2,7 +2,49 @@ unit Functions;
 
 interface
 
-uses Windows, Classes, StrUtils, SysUtils, ComCtrls, DBCFile, Registry, Messages, Controls, JvExComCtrls, JvListView, WideStrings;
+Uses
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.IniFiles,
+  Data.DB,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Menus,
+  FMX.Grid,
+  FMX.ExtCtrls,
+  FMX.ListBox,
+  FMX.TreeView,
+  FMX.Memo,
+  FMX.TabControl,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Platform,
+  FMX.Bind.DBEngExt,
+  FMX.Bind.Editors,
+  FMX.Bind.DBLinks,
+  FMX.Bind.Navigator,
+  Data.Bind.EngExt,
+  Data.Bind.Components,
+  Data.Bind.DBScope,
+  Data.Bind.DBLinks,
+  Datasnap.DBClient,
+  Fmx.Bind.Grid,
+  System.Rtti,
+  System.Bindings.Outputs,
+  Data.Bind.Grid,
+  Fmx.StdCtrls,
+  FMX.Header,
+  FMX.Graphics,
+  Winapi.Windows,
+  System.Win.Registry,
+
+  DBCFILE;
 
 type
    TParameter = (tpInteger, tpFloat, tpString, tpDate, tpTime, tpDateTime,
@@ -578,14 +620,14 @@ end;
 function GetClassAcronym(value: integer): string;
 begin
   case value of
-    1	: Result := 'Warrior';
-    2	: Result := 'Paladin';
-    3	: Result := 'Hunter';
-    4	: Result := 'Rogue';
-    5	: Result := 'Priest';
-    7	: Result := 'Shaman';
-    8	: Result := 'Mage';
-    9	: Result := 'Warlock';
+    1: Result := 'Warrior';
+    2: Result := 'Paladin';
+    3: Result := 'Hunter';
+    4: Result := 'Rogue';
+    5: Result := 'Priest';
+    7: Result := 'Shaman';
+    8: Result := 'Mage';
+    9: Result := 'Warlock';
     11: Result := 'Druid';
   else
     Result:= '';
@@ -605,17 +647,18 @@ begin
     if not OpenKey('SOFTWARE\Truice', false) then exit;
     try
      case ReadInteger('Locales') of
-      0: result:= '_loc1';
-      1: result:= '_loc2';
-      2: result:= '_loc3';
-      3: result:= '_loc4';
-      4: result:= '_loc5';
-      5: result:= '_loc6';
-      6: result:= '_loc7';
-      7: result:= '_loc8';
+      0: result:= 'enUS';
+      1: result:= 'koKR';
+      2: result:= 'frFR';
+      3: result:= 'deDE';
+      4: result:= 'zhCN';
+      5: result:= 'zhTW';
+      6: result:= 'esES';
+      7: result:= 'esMX';
+      8: result:= 'ruRU';
      end;
    except
-      Result:= '_loc1';
+      Result:= 'enUS';
     end;
   finally
     free;
